@@ -1,4 +1,3 @@
-#!/usr/bin/python
 from PySide.QtCore import QRect
 from PySide.QtGui import *
 from Swiat import *

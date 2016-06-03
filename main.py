@@ -4,6 +4,7 @@
 import sys
 from Swiat import *
 from Organizm import *
+from Wilk import *
 # Create a Qt application
 app = QApplication(sys.argv)
 # Create a Label and show it
@@ -15,9 +16,10 @@ swiat.SetR(20,20)
 mywin.run()
 
 
-o = Organizm(swiat)
+o = Wilk(swiat)
 o.posX = 1
 o.posY = 2
+
 swiat.AddOrganizm(o,1,2)
 
 o = Organizm(swiat)

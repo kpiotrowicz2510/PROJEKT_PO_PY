@@ -20,19 +20,33 @@ class Swiat:
     def AddOrganizm(self,org):
         x = random.randint(0,self.sRX)
         y = random.randint(0,self.sRY)
-
-    def AddOrganizm(self, org,x,y):
+        if (self.FreeSpace(x, y) == False):
+            return
         org.posX = x
         org.posY = y
         org.id = self.newId
         self.organizmy.insert(self.newId,org)
+        self.newId+=1
+        self.info.insert(self.info.count, "Dodano organizm - " + org.name)
+
+    def AddOrganizm(self, org,x,y):
+        org.posX = x
+        org.posY = y
+        if(self.FreeSpace(x,y)==False):
+            return
+        org.id = self.newIdv
+        self.organizmy.insert(self.newId,org)
         self.newId += 1
+        self.info.insert(self.info.count, "Dodano organizm - " + org.name)
     def FreeSpace(self,x,y):
-        ret = True
         for i in range(self.organizmy.count):
             if(self.organizmy[i].x==x and self.organizmy[i].y==y):
-                ret=False
-        return ret
+                return False
+        return True
+    def podajOrganizm(self,x,y):
+        for i in range(self.organizmy.count):
+            if(self.organizmy[i].x==x and self.organizmy[i].y==y):
+                return self.organizmy[i]
     def UpdateLoop(self, key):
         self.WykonajTure(1)
         self.UpdateLog()
