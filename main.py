@@ -7,6 +7,55 @@ from Swiat import *
 from Wilk import *
 from Antylope import *
 from Czlowiek import *
+from Gurana import *
+from Jagody import *
+from Lis import *
+from Mlecz import *
+from Owca import *
+from Trawa import *
+from Zolw import *
+
+def initialize():
+    o = Wilk(swiat)
+    swiat.AddOrganizm(o)
+    o = Wilk(swiat)
+    swiat.AddOrganizm(o)
+    o = Antylopa(swiat)
+    swiat.AddOrganizm(o)
+    o = Antylopa(swiat)
+    swiat.AddOrganizm(o)
+    o = Guarana(swiat)
+    swiat.AddOrganizm(o)
+    o = Guarana(swiat)
+    swiat.AddOrganizm(o)
+    o = Jagody(swiat)
+    swiat.AddOrganizm(o)
+    o = Jagody(swiat)
+    swiat.AddOrganizm(o)
+    o = Lis(swiat)
+    swiat.AddOrganizm(o)
+    o = Lis(swiat)
+    swiat.AddOrganizm(o)
+    o = Mlecz(swiat)
+    swiat.AddOrganizm(o)
+    o = Mlecz(swiat)
+    swiat.AddOrganizm(o)
+    o = Owca(swiat)
+    swiat.AddOrganizm(o)
+    o = Owca(swiat)
+    swiat.AddOrganizm(o)
+    o = Trawa(swiat)
+    swiat.AddOrganizm(o)
+    o = Trawa(swiat)
+    swiat.AddOrganizm(o)
+    o = Zolw(swiat)
+    swiat.AddOrganizm(o)
+    o = Zolw(swiat)
+    swiat.AddOrganizm(o)
+
+    o = Czlowiek(swiat)
+    swiat.AddOrganizm(o)
+    swiat.czlowiek = o
 # Create a Qt application
 app = QApplication(sys.argv)
 # Create a Label and show it
@@ -17,23 +66,7 @@ swiat.SetWindow(mywin)
 swiat.SetR(20,20)
 mywin.run()
 
-
-o1 = Wilk(swiat)
-o1.posX = 1
-o1.posY = 2
-
-swiat.AddOrganizm(o1,1,2)
-
-o = Wilk(swiat)
-o.posX = 1
-o.posY = 4
-swiat.AddOrganizm(o)
-
-o = Antylopa(swiat)
-swiat.AddOrganizm(o)
-
-o = Czlowiek(swiat)
-swiat.AddOrganizm(o)
+initialize()
 swiat.UpdateLoop(1)
 
 # Enter Qt application main loop

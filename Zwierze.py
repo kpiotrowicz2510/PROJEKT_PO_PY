@@ -42,4 +42,4 @@ class Zwierze(Organizm):
             self.swiat.info.insert(len(self.swiat.info),"Organizm - " + self.name + " zabija " +org.name)
     def uciekaj(self):
         self.SetX(self.last_posX)
-        self.setY(self.last_posY)
+        self.SetY(self.last_posY)

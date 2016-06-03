@@ -4,4 +4,5 @@ class Wilk(Zwierze):
         self.swiat = swiat
         self.inicjatywa = 5
         self.sila = 9
+        self.name = "Wilk"
         self.color = "#000"
