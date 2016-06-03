@@ -73,6 +73,7 @@ class Swiat:
         for i in range(len(self.organizmy)):
             if(self.organizmy[i].posX==x and self.organizmy[i].posY==y):
                 return self.organizmy[i]
+        return False
     def UpdateLoop(self, key):
         self.WykonajTure(1)
         self.UpdateLog()

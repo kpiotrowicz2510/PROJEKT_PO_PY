@@ -6,6 +6,7 @@ import sys
 from Swiat import *
 from Wilk import *
 from Antylope import *
+from Czlowiek import *
 # Create a Qt application
 app = QApplication(sys.argv)
 # Create a Label and show it
@@ -31,6 +32,8 @@ swiat.AddOrganizm(o)
 o = Antylopa(swiat)
 swiat.AddOrganizm(o)
 
+o = Czlowiek(swiat)
+swiat.AddOrganizm(o)
 swiat.UpdateLoop(1)
 
 # Enter Qt application main loop
