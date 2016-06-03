@@ -18,5 +18,28 @@ class Zwierze(Organizm):
 
     @abstractmethod
     def kolizja(self):
-        org = self.swiat
-        pass
+        org = self.swiat.podajOrganizm(self.posX, self.posY)
+        if (self.swiat.FreeSpace(self.posX, self.posY) == False):
+            if (self.id != org.id):
+                if (org.color == self.color):
+                    self.rozmnazanie()
+                else:
+                    self.walka(org)
+    def rozmnazanie(self):
+        x, y = self.swiat.FreeSpaceP(self.posX, self.posY)
+        orgType = type(self)
+        org = orgType(self.swiat)
+        return True
+    def walka(self,org):
+        if(self.sila > org.sila):
+            self.swiat.deleteOrganizm(org.id)
+            self.swiat.info.insert(len(self.swiat.info), "Organizm - " + self.name + " zabija " +org.name)
+        if (self.sila < org.sila):
+            self.swiat.deleteOrganizm(self.id)
+            self.swiat.info.insert(len(self.swiat.info),"Organizm - " + org.name + " zabija " +self.name)
+        if (self.sila == org.sila):
+            self.swiat.deleteOrganizm(org.id)
+            self.swiat.info.insert(len(self.swiat.info),"Organizm - " + self.name + " zabija " +org.name)
+    def uciekaj(self):
+        self.SetX(self.last_posX)
+        self.setY(self.last_posY)

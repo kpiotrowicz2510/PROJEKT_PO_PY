@@ -7,6 +7,7 @@ class Swiat:
     sRY = 30
     newId = 0
     organizmy = []
+    czlowiek = 0
     def __init__(self):
         self.organizmy = []
         self.info = []
@@ -27,31 +28,59 @@ class Swiat:
         org.id = self.newId
         self.organizmy.insert(self.newId,org)
         self.newId+=1
-        self.info.insert(self.info.count, "Dodano organizm - " + org.name)
+        self.info.insert(len(self.info), "Dodano organizm - " + org.name)
 
-    def AddOrganizm(self, org,x,y):
-        org.posX = x
-        org.posY = y
+    def AddOrganizm(self, org,x=-1,y=-1):
+        if(x>-1 and y>-1):
+            org.posX = x
+            org.posY = y
+        else:
+            x = random.randint(0, self.sRX)
+            y = random.randint(0, self.sRY)
+            org.posX = x
+            org.posY = y
         if(self.FreeSpace(x,y)==False):
             return
-        org.id = self.newIdv
+        org.id = self.newId
         self.organizmy.insert(self.newId,org)
         self.newId += 1
-        self.info.insert(self.info.count, "Dodano organizm - " + org.name)
+        self.info.insert(len(self.info), "Dodano organizm - " + org.name)
     def FreeSpace(self,x,y):
-        for i in range(self.organizmy.count):
-            if(self.organizmy[i].x==x and self.organizmy[i].y==y):
+        for i in range(len(self.organizmy)):
+            if(self.organizmy[i].posX==x and self.organizmy[i].posY==y):
                 return False
         return True
+    def FreeSpaceP(self,x2,y2):
+        xs = 0;
+        ys = 0;
+        if (x2 == 0):
+            xs = 1
+
+        if (y2 == 0):
+            ys = 1
+
+        for y in range(-1+ys, 2+ys):
+            for x in range(-1+xs, 2+xs):
+                if (self.FreeSpace((x2 + x), (y2 + y))):
+                    yield x2+x
+                    yield y2+y
+                    return
+
+        yield -1
+        yield -1
+
     def podajOrganizm(self,x,y):
-        for i in range(self.organizmy.count):
-            if(self.organizmy[i].x==x and self.organizmy[i].y==y):
+        for i in range(len(self.organizmy)):
+            if(self.organizmy[i].posX==x and self.organizmy[i].posY==y):
                 return self.organizmy[i]
     def UpdateLoop(self, key):
         self.WykonajTure(1)
         self.UpdateLog()
         self.RysujSwiat()
     def WykonajTure(self, key):
+        for i in range(len(self.organizmy)):
+            self.organizmy[i].akcja()
+            self.organizmy[i].kolizja()
         return True
     def RysujSwiat(self):
         print len(self.organizmy)
@@ -60,4 +89,11 @@ class Swiat:
         return True
     def UpdateLog(self):
         return True
-
+    def deleteOrganizm(self,id):
+        deleteId = -1
+        for i in range(len(self.organizmy)):
+            if(self.organizmy[i].id == id):
+                deleteId = id
+        if(deleteId>-1):
+            print deleteId
+            self.organizmy.remove(self.organizmy[deleteId])

@@ -24,7 +24,7 @@ class MyWindow(QWidget):
             for i in range(0, self.sizeX):
                 button = QPushButton()
                 button.setGeometry(QRect(0, 20, 20, 20))
-                button.setStyleSheet("background-color: #F00")
+                button.setStyleSheet("background-color: #FFF")
                 button.setObjectName(str(j * 10 + i))
                 button.setMaximumWidth(20)
                 button.setMaximumHeight(20)
