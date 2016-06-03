@@ -4,6 +4,7 @@ class Antylopa(Zwierze):
         self.swiat = swiat
         self.inicjatywa = 4
         self.sila = 4
+        self.name = "Antylopa"
         self.color = "#FA0"
     def akcja(self):
         x = random.randint(0, 2)

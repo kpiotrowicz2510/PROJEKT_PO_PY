@@ -8,6 +8,7 @@ class Czlowiek(Zwierze):
         self.swiat = swiat
         self.inicjatywa = 4
         self.sila = 5
+        self.name = "Czlowiek"
         self.color = "#F00"
     def akcja(self):
         key = self.swiat.pressedKey

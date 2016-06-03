@@ -4,6 +4,7 @@ class Lis(Zwierze):
         self.swiat = swiat
         self.inicjatywa = 7
         self.sila = 3
+        self.name = "Lis"
         self.color = "#00F"
 
     def akcja(self):
