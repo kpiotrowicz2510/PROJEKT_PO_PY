@@ -8,10 +8,19 @@ class MyWindow(QWidget):
         print self.sender().objectName()
     def __init__(self):
         super(MyWindow, self).__init__()
-
+        #self.installEventFilter(self)
+    def keyPressEvent(self, event):
+        key = event.key()
+        print key
+        self.swiat.UpdateLoop(key)
     def setSize(self,x,y):
         self.sizeX = x
         self.sizeY = y
+    def Clear(self):
+        for j in range(0, self.sizeY):
+            for i in range(0, self.sizeX):
+                self.hbox.itemAtPosition(i, j).widget().setStyleSheet(
+                    "background-color: #FFF")
     def run(self):
         self.mbox = QGridLayout()
         self.hbox = QGridLayout()

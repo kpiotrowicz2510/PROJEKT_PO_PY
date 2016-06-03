@@ -75,10 +75,21 @@ class Swiat:
                 return self.organizmy[i]
         return False
     def UpdateLoop(self, key):
-        self.WykonajTure(1)
+        self.WykonajTure(key)
         self.UpdateLog()
+        self.window.Clear()
         self.RysujSwiat()
     def WykonajTure(self, key):
+        if(key==87):
+            self.pressedKey = 0
+        if (key == 83):
+            self.pressedKey = 1
+        if (key == 65):
+            self.pressedKey = 2
+        if (key == 68):
+            self.pressedKey = 3
+        if (key == 85):
+            self.pressedKey = 4
         for i in range(len(self.organizmy)):
             self.organizmy[i].akcja()
             self.organizmy[i].kolizja()

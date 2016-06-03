@@ -63,6 +63,7 @@ app = QApplication(sys.argv)
 mywin = MyWindow()
 swiat = Swiat()
 swiat.SetWindow(mywin)
+mywin.swiat = swiat
 swiat.SetR(20,20)
 mywin.run()
 

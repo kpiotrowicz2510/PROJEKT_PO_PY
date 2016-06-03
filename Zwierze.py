@@ -5,12 +5,12 @@ class Zwierze(Organizm):
     @abstractmethod
     def akcja(self):
         x = random.randint(0,2)
-        if(x==1):
+        if(x==0):
             self.SetX(self.posX-1)
         if (x == 1):
             self.SetX(self.posX + 1)
         y = random.randint(0, 2)
-        if (y == 1):
+        if (y == 0):
             self.SetY(self.posY - 1)
         if (y == 1):
             self.SetY(self.posY + 1)

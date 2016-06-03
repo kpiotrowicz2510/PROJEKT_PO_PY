@@ -28,15 +28,15 @@ class Czlowiek(Zwierze):
         gx = self.posX
         gy = self.posY
 
-        if(x-1 > 0 and key==0):
+        if(x-1 > 0 and self.swiat.pressedKey==2):
             self.SetX(gx-1)
             return
-        if(x+1 <= self.swiat.sRX):
+        if(self.swiat.pressedKey==3):
             self.SetX(gx+1)
             return
-        if (y - 1 >= 0):
+        if (y - 1 >= 0 and self.swiat.pressedKey == 0):
             self.SetY(gy - 1)
             return
-        if (y + 1 <= self.swiat.sRY):
+        if (y + 1 <= self.swiat.sRY and self.swiat.pressedKey == 1):
             self.SetY(gy + 1)
             return

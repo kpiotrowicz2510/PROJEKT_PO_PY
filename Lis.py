@@ -11,12 +11,12 @@ class Lis(Zwierze):
         moveX = 0
         moveY = 0
         x = random.randint(0, 2)
-        if (x == 1):
+        if (x == 0):
           moveX = self.posX - 1
         if (x == 1):
            moveX  = self.posX + 1
         y = random.randint(0, 2)
-        if (y == 1):
+        if (y == 0):
            moveY = self.posY - 1
         if (y == 1):
            moveY = self.posY + 1
