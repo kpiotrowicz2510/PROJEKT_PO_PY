@@ -59,8 +59,9 @@ swiat.SetWindow(mywin)
 mywin.swiat = swiat
 swiat.SetR(int(x),int(y))
 mywin.run()
-
 initialize()
+swiat.Save()
+swiat.Load()
 swiat.UpdateLoop(1)
 
 # Enter Qt application main loop

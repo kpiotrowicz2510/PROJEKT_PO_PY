@@ -16,7 +16,7 @@ class MyWindow(QWidget):
         super(MyWindow, self).__init__()
     def keyPressEvent(self, event):
         key = event.key()
-        #print key
+        print key
         self.swiat.UpdateLoop(key)
     def setSize(self,x,y):
         self.sizeX = x

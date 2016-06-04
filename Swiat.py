@@ -28,6 +28,53 @@ class Swiat:
         self.window.setSize(x,y)
     def SetWindow(self, wind):
         self.window = wind
+    def Save(self):
+        file_ = open('world.txt', 'w')
+        file_.write(str(self.sRX) + " ")
+        file_.write(str(self.sRY) + " ")
+        file_.write(str(self.newId)+" ")
+        file_.write(str(self.turaNumer) + " ")
+        file_.write(str(len(self.organizmy))+" ")
+        for i in range(0, len(self.organizmy)):
+            file_.write(str(self.organizmy[i].id)+ " ")
+            file_.write(str(self.organizmy[i].name) + " ")
+            file_.write(str(self.organizmy[i].color) + " ")
+            file_.write(str(self.organizmy[i].inicjatywa) + " ")
+            file_.write(str(self.organizmy[i].sila) + " ")
+            file_.write(str(self.organizmy[i].posX) + " ")
+            file_.write(str(self.organizmy[i].posY) + " ")
+        file_.close()
+        self.info.insert(len(self.info), "Zapisano do pliku!")
+    def Load(self):
+        file_ = open('world.txt','r')
+        text = file_.read()
+        lista = text.split(" ")
+        self.organizmy = []
+        self.info = []
+        rx = int(lista[0])
+        ry = int(lista[1])
+        self.SetR(rx,ry)
+        self.window.setSize(rx,ry)
+        self.window.run()
+
+        nid = int(lista[2])
+        tura = int(lista[3])
+        os = int(lista[4])
+        self.turaNumer = tura
+        self.newId = nid
+        start = 5
+        for i in range(0,os):
+            id = int(lista[start])
+            name = lista[start+1]
+            color = lista[start+2]
+            inicjatywa = lista[start+3]
+            sila = lista[start+4]
+            x = int(lista[start+5])
+            y = int(lista[start+6])
+
+            
+        self.info.insert(len(self.info), "Wczytano z pliku!")
+        return
     def AddName(self,name,x,y):
         o = None
         if (name == "A"):
@@ -103,7 +150,7 @@ class Swiat:
         yield -1
 
     def podajOrganizm(self,x,y):
-        for i in range(len(self.organizmy)):
+        for i in range(0,len(self.organizmy)):
             if(self.organizmy[i].posX==x and self.organizmy[i].posY==y):
                 return self.organizmy[i]
         return False
