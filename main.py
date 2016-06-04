@@ -4,6 +4,9 @@
 import sys
 from Swiat import *
 def initialize():
+    o = Czlowiek(swiat)
+    swiat.AddOrganizm(o)
+    swiat.czlowiek = o
     o = Wilk(swiat)
     swiat.AddOrganizm(o)
     o = Wilk(swiat)
@@ -41,9 +44,6 @@ def initialize():
     o = Zolw(swiat)
     swiat.AddOrganizm(o)
 
-    o = Czlowiek(swiat)
-    swiat.AddOrganizm(o)
-    swiat.czlowiek = o
 # Create a Qt application
 app = QApplication(sys.argv)
 # Create a Label and show it

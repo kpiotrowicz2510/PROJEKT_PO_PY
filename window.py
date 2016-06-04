@@ -68,3 +68,4 @@ class MyWindow(QWidget):
         self.lbox.addWidget(self.list,2,0)
         self.setLayout(self.mbox)
         self.show()
+        self.setFocus()

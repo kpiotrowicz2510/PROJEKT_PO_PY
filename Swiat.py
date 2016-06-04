@@ -204,9 +204,11 @@ class Swiat:
             self.pressedKey = 1
         if (key == 85):
             self.pressedKey = 4
-        for i in range(0,len(self.organizmy)):
+        k = len(self.organizmy)-1
+        for i in range(0,k):
             self.organizmy[i].akcja()
             self.organizmy[i].kolizja()
+            k = len(self.organizmy)-1
         return True
     def RysujSwiat(self):
         print len(self.organizmy)
