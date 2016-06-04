@@ -42,6 +42,7 @@ class MyWindow(QWidget):
         self.list = QListWidget(self)
         self.list.setMaximumHeight(150)
         self.list.scrollToBottom()
+        self.setWindowTitle("Krzysztof Piotrowicz 160873")
         self.list.clear()
         for j in range(0, self.sizeY):
             for i in range(0, self.sizeX):
