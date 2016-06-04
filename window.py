@@ -41,6 +41,7 @@ class MyWindow(QWidget):
         self.hbox.setSpacing(0)
         self.list = QListWidget(self)
         self.list.setMaximumHeight(150)
+        self.list.scrollToBottom()
         self.list.clear()
         for j in range(0, self.sizeY):
             for i in range(0, self.sizeX):

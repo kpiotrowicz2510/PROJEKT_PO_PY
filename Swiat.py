@@ -194,13 +194,13 @@ class Swiat:
         self.window.Clear()
         self.RysujSwiat()
     def WykonajTure(self, key):
-        if(key==87):
+        if(key==65):
             self.pressedKey = 2
-        if (key == 83):
+        if key == 68:
             self.pressedKey = 3
-        if (key == 65):
+        if (key == 87):
             self.pressedKey = 0
-        if (key == 68):
+        if (key == 83):
             self.pressedKey = 1
         if (key == 85):
             self.pressedKey = 4
@@ -209,9 +209,10 @@ class Swiat:
             self.organizmy[i].akcja()
             self.organizmy[i].kolizja()
             k = len(self.organizmy)-1
+        self.turaNumer += 1
         return True
     def RysujSwiat(self):
-        print len(self.organizmy)
+        #print len(self.organizmy)
         for i in range(0,len(self.organizmy)):
             if(self.window.hbox.itemAtPosition(self.organizmy[i].posX,self.organizmy[i].posY)!=None):
                 self.window.hbox.itemAtPosition(self.organizmy[i].posX,self.organizmy[i].posY).widget().setStyleSheet("background-color: "+self.organizmy[i].color)
@@ -221,5 +222,6 @@ class Swiat:
         self.window.list.clear()
         for i in range(0,len(self.info)):
             self.window.list.addItem( QListWidgetItem(self.info[i]))
+        self.window.list.scrollToBottom()
     def deleteOrganizm(self,org):
         self.organizmy.remove(org)
