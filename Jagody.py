@@ -11,5 +11,5 @@ class Jagody(Roslina):
         org = self.swiat.podajOrganizm(self.posX, self.posY)
         if (org.id != self.id):
             self.swiat.info.insert(len(self.swiat.info), "Organizm - " + self.name + " zabija " + org.name)
-            self.swiat.deleteOrganizm(org.id)
-            self.swiat.deleteOrganizm(self.id)
+            self.swiat.deleteOrganizm(org)
+            self.swiat.deleteOrganizm(self)

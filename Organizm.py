@@ -16,12 +16,12 @@ class Organizm(object):
         self.posY = 0
         self.color = "#00F"
     def SetX(self,x):
-        if(x>-1 and self.swiat.sRX > x):
+        if(x>-1 and self.swiat.sRX >= x):
             self.last_posX = self.posX
             self.posX = x
 
     def SetY(self, y):
-        if (y > -1 and self.swiat.sRY > y):
+        if (y > -1 and self.swiat.sRY >= y):
             self.last_posY = self.posY
             self.posY = y
     @abstractmethod

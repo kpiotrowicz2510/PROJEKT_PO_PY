@@ -10,4 +10,4 @@ class Guarana(Roslina):
         org = self.swiat.podajOrganizm(self.posX, self.posY)
         if(org.id!=self.id and org.color != self.color):
             org.sila += 3
-            self.swiat.deleteOrganizm(self.id)
+            self.swiat.deleteOrganizm(self)

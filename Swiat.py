@@ -1,5 +1,16 @@
 import random
 from window import *
+from Wilk import *
+from Antylope import *
+from Czlowiek import *
+from Gurana import *
+from Jagody import *
+from Lis import *
+from Mlecz import *
+from Owca import *
+from Trawa import *
+from Zolw import *
+
 class Swiat:
     pressedKey = -1
     turaNumer = 0
@@ -17,10 +28,32 @@ class Swiat:
         self.window.setSize(x,y)
     def SetWindow(self, wind):
         self.window = wind
-
+    def AddName(self,name,x,y):
+        o = None
+        if (name == "A"):
+            o = Antylopa(self)
+        if (name == "G"):
+            o = Guarana(self)
+        if (name == "J"):
+            o = Jagody(self)
+        if (name == "L"):
+            o = Lis(self)
+        if (name == "M"):
+            o = Mlecz(self)
+        if (name == "O"):
+            o = Owca(self)
+        if (name == "T"):
+            o = Trawa(self)
+        if (name == "W"):
+            o = Wilk(self)
+        if (name == "Z"):
+            o = Zolw(self)
+        if(o!=None):
+            self.AddOrganizm(o, x,y)
+        self.RysujSwiat()
     def AddOrganizm(self,org):
-        x = random.randint(0,self.sRX)
-        y = random.randint(0,self.sRY)
+        x = random.randint(0,self.sRX-1)
+        y = random.randint(0,self.sRY-1)
         if (self.FreeSpace(x, y) == False):
             return
         org.posX = x
@@ -35,8 +68,8 @@ class Swiat:
             org.posX = x
             org.posY = y
         else:
-            x = random.randint(0, self.sRX)
-            y = random.randint(0, self.sRY)
+            x = random.randint(0, self.sRX-1)
+            y = random.randint(0, self.sRY-1)
             org.posX = x
             org.posY = y
         if(self.FreeSpace(x,y)==False):
@@ -81,31 +114,29 @@ class Swiat:
         self.RysujSwiat()
     def WykonajTure(self, key):
         if(key==87):
-            self.pressedKey = 0
-        if (key == 83):
-            self.pressedKey = 1
-        if (key == 65):
             self.pressedKey = 2
-        if (key == 68):
+        if (key == 83):
             self.pressedKey = 3
+        if (key == 65):
+            self.pressedKey = 0
+        if (key == 68):
+            self.pressedKey = 1
         if (key == 85):
             self.pressedKey = 4
-        for i in range(len(self.organizmy)):
+        for i in range(0,len(self.organizmy)):
             self.organizmy[i].akcja()
             self.organizmy[i].kolizja()
         return True
     def RysujSwiat(self):
         print len(self.organizmy)
         for i in range(0,len(self.organizmy)):
-            self.window.hbox.itemAtPosition(self.organizmy[i].posX,self.organizmy[i].posY).widget().setStyleSheet("background-color: "+self.organizmy[i].color)
+            if(self.window.hbox.itemAtPosition(self.organizmy[i].posX,self.organizmy[i].posY)!=None):
+                self.window.hbox.itemAtPosition(self.organizmy[i].posX,self.organizmy[i].posY).widget().setStyleSheet("background-color: "+self.organizmy[i].color)
         return True
     def UpdateLog(self):
-        return True
-    def deleteOrganizm(self,id):
-        deleteId = -1
-        for i in range(len(self.organizmy)):
-            if(self.organizmy[i].id == id):
-                deleteId = id
-        if(deleteId>-1):
-            print deleteId
-            self.organizmy.remove(self.organizmy[deleteId])
+        print "INFO" + str(len(self.info))
+        self.window.list.clear()
+        for i in range(0,len(self.info)):
+            self.window.list.addItem( QListWidgetItem(self.info[i]))
+    def deleteOrganizm(self,org):
+        self.organizmy.remove(org)

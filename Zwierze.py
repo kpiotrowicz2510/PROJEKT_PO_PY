@@ -29,16 +29,17 @@ class Zwierze(Organizm):
         x, y = self.swiat.FreeSpaceP(self.posX, self.posY)
         orgType = type(self)
         org = orgType(self.swiat)
+        self.swiat.AddOrganizm(org,x,y)
         return True
     def walka(self,org):
         if(self.sila > org.sila):
-            self.swiat.deleteOrganizm(org.id)
+            self.swiat.deleteOrganizm(org)
             self.swiat.info.insert(len(self.swiat.info), "Organizm - " + self.name + " zabija " +org.name)
         if (self.sila < org.sila):
-            self.swiat.deleteOrganizm(self.id)
+            self.swiat.deleteOrganizm(self)
             self.swiat.info.insert(len(self.swiat.info),"Organizm - " + org.name + " zabija " +self.name)
         if (self.sila == org.sila):
-            self.swiat.deleteOrganizm(org.id)
+            self.swiat.deleteOrganizm(org)
             self.swiat.info.insert(len(self.swiat.info),"Organizm - " + self.name + " zabija " +org.name)
     def uciekaj(self):
         self.SetX(self.last_posX)

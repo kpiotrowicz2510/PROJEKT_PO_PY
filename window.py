@@ -5,13 +5,18 @@ class MyWindow(QWidget):
     sx = 10
     sy = 10
     def buttonClick(self):
-        print self.sender().objectName()
+        addOrg, ok = QInputDialog.getText(self, 'Dodaj organizm', 'Podaj nazwe organizmu:')
+        number = int(self.sender().objectName())
+        nx = 0
+        ny = 0
+        ny = int(number/self.sizeX)
+        nx = number - ny*self.sizeX
+        self.swiat.AddName(addOrg,ny, nx)
     def __init__(self):
         super(MyWindow, self).__init__()
-        #self.installEventFilter(self)
     def keyPressEvent(self, event):
         key = event.key()
-        print key
+        #print key
         self.swiat.UpdateLoop(key)
     def setSize(self,x,y):
         self.sizeX = x
@@ -25,10 +30,11 @@ class MyWindow(QWidget):
         self.mbox = QGridLayout()
         self.hbox = QGridLayout()
         self.lbox = QGridLayout()
-        label = QLabel('dupa')
-        self.lbox.addWidget(label)
+        #label = QLabel('dupa')
+        #self.lbox.addWidget(label)
         self.hbox.setSpacing(0)
-
+        self.list = QListWidget(self)
+        self.list.clear()
         for j in range(0, self.sizeY):
             for i in range(0, self.sizeX):
                 button = QPushButton()
@@ -42,5 +48,6 @@ class MyWindow(QWidget):
                 self.hbox.addWidget(button, j, i)
         self.mbox.addItem(self.hbox, 0, 0)
         self.mbox.addItem(self.lbox, 0, 1)
+        self.lbox.addWidget(self.list,0,0)
         self.setLayout(self.mbox)
         self.show()

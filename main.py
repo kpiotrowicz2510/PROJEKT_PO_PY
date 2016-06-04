@@ -4,17 +4,6 @@
 import sys
 
 from Swiat import *
-from Wilk import *
-from Antylope import *
-from Czlowiek import *
-from Gurana import *
-from Jagody import *
-from Lis import *
-from Mlecz import *
-from Owca import *
-from Trawa import *
-from Zolw import *
-
 def initialize():
     o = Wilk(swiat)
     swiat.AddOrganizm(o)
@@ -61,10 +50,14 @@ app = QApplication(sys.argv)
 # Create a Label and show it
 
 mywin = MyWindow()
+
+x, ok = QInputDialog.getText(mywin, 'Rozmiary', 'Podaj rozmiar X')
+y, ok = QInputDialog.getText(mywin, 'Rozmiary', 'Podaj rozmiar Y')
+
 swiat = Swiat()
 swiat.SetWindow(mywin)
 mywin.swiat = swiat
-swiat.SetR(20,20)
+swiat.SetR(int(x),int(y))
 mywin.run()
 
 initialize()

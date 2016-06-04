@@ -14,4 +14,5 @@ class Mlecz(Roslina):
                 x, y = self.swiat.FreeSpaceP(self.posX, self.posY)
                 orgType = type(self)
                 org = orgType(self.swiat)
+                self.swiat.AddOrganizm(org,x,y)
                 return True
