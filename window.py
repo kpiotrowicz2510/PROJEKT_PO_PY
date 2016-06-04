@@ -4,6 +4,12 @@ from Swiat import *
 class MyWindow(QWidget):
     sx = 10
     sy = 10
+
+    def buttonSave(self):
+        self.swiat.Save()
+    def buttonLoad(self):
+        self.swiat.Load()
+        self.close()
     def buttonClick(self):
         addOrg, ok = QInputDialog.getText(self, 'Dodaj organizm', 'Podaj nazwe organizmu:')
         number = int(self.sender().objectName())
@@ -34,6 +40,7 @@ class MyWindow(QWidget):
         #self.lbox.addWidget(label)
         self.hbox.setSpacing(0)
         self.list = QListWidget(self)
+        self.list.setMaximumHeight(150)
         self.list.clear()
         for j in range(0, self.sizeY):
             for i in range(0, self.sizeX):
@@ -48,6 +55,16 @@ class MyWindow(QWidget):
                 self.hbox.addWidget(button, j, i)
         self.mbox.addItem(self.hbox, 0, 0)
         self.mbox.addItem(self.lbox, 0, 1)
-        self.lbox.addWidget(self.list,0,0)
+        button = QPushButton()
+        button.setText("Wczytaj")
+        button.setMaximumWidth(150)
+        button.clicked.connect(self.buttonLoad)
+        self.lbox.addWidget(button,0,0)
+        button = QPushButton()
+        button.setText("Zapisz")
+        button.setMaximumWidth(150)
+        button.clicked.connect(self.buttonSave)
+        self.lbox.addWidget(button, 1, 0)
+        self.lbox.addWidget(self.list,2,0)
         self.setLayout(self.mbox)
         self.show()

@@ -49,13 +49,11 @@ class Swiat:
         file_ = open('world.txt','r')
         text = file_.read()
         lista = text.split(" ")
-        self.organizmy = []
-        self.info = []
+        del self.organizmy[:]
+        del self.info[:]
         rx = int(lista[0])
         ry = int(lista[1])
         self.SetR(rx,ry)
-        self.window.setSize(rx,ry)
-        self.window.run()
 
         nid = int(lista[2])
         tura = int(lista[3])
@@ -67,14 +65,50 @@ class Swiat:
             id = int(lista[start])
             name = lista[start+1]
             color = lista[start+2]
-            inicjatywa = lista[start+3]
-            sila = lista[start+4]
+            inicjatywa = int(lista[start+3])
+            sila = int(lista[start+4])
             x = int(lista[start+5])
             y = int(lista[start+6])
 
-            
+            o = None
+            if (name == "Antylopa"):
+                o = Antylopa(self)
+            if (name == "Guarana"):
+                o = Guarana(self)
+            if (name == "Jagody"):
+                o = Jagody(self)
+            if (name == "Lis"):
+                o = Lis(self)
+            if (name == "Mlecz"):
+                o = Mlecz(self)
+            if (name == "Owca"):
+                o = Owca(self)
+            if (name == "Trawa"):
+                o = Trawa(self)
+            if (name == "Wilk"):
+                o = Wilk(self)
+            if (name == "Zolw"):
+                o = Zolw(self)
+            if(name=="Czlowiek"):
+                o=Czlowiek(self)
+                self.czlowiek = o
+            if (o != None):
+                o.sila = sila
+                o.posX = x
+                o.id = id
+                o.posY = y
+                self.AddOrganizm(o, x, y)
+            start+=7
         self.info.insert(len(self.info), "Wczytano z pliku!")
-        return
+        self.window=None
+        mywin = MyWindow()
+        self.SetWindow(mywin)
+        self.window.swiat = self
+        self.window.setSize(rx, ry)
+        self.window.run()
+        self.RysujSwiat()
+        self.UpdateLog()
+
     def AddName(self,name,x,y):
         o = None
         if (name == "A"):

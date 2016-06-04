@@ -4,7 +4,7 @@ class Jagody(Roslina):
         self.swiat = swiat
         self.inicjatywa = 0
         self.sila = 99
-        self.name = "Wilcze Jagody"
+        self.name = "Jagody"
         self.color = "#0FF"
 
     def kolizja(self):
