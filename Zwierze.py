@@ -32,15 +32,18 @@ class Zwierze(Organizm):
         self.swiat.AddOrganizm(org,x,y)
         return True
     def walka(self,org):
+        word = " zabija "
+        if(org.inicjatywa==0):
+            word = " zjada "
         if(self.sila > org.sila):
             self.swiat.deleteOrganizm(org)
-            self.swiat.info.insert(len(self.swiat.info), "Organizm - " + self.name + " zabija " +org.name)
+            self.swiat.info.insert(len(self.swiat.info), "Organizm - " + self.name +word +org.name)
         if (self.sila < org.sila):
             self.swiat.deleteOrganizm(self)
-            self.swiat.info.insert(len(self.swiat.info),"Organizm - " + org.name + " zabija " +self.name)
+            self.swiat.info.insert(len(self.swiat.info),"Organizm - " + org.name + word +self.name)
         if (self.sila == org.sila):
             self.swiat.deleteOrganizm(org)
-            self.swiat.info.insert(len(self.swiat.info),"Organizm - " + self.name + " zabija " +org.name)
+            self.swiat.info.insert(len(self.swiat.info),"Organizm - " + self.name + word +org.name)
     def uciekaj(self):
         self.SetX(self.last_posX)
         self.SetY(self.last_posY)

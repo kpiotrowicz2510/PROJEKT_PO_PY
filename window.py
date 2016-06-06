@@ -54,7 +54,7 @@ class MyWindow(QWidget):
                 button.setMaximumHeight(20)
                 #button.setFlat(True)
                 button.clicked.connect(self.buttonClick)
-                self.hbox.addWidget(button, j, i)
+                self.hbox.addWidget(button, i, j)
         self.mbox.addItem(self.hbox, 0, 0)
         self.mbox.addItem(self.lbox, 0, 1)
         button = QPushButton()

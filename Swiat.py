@@ -23,6 +23,9 @@ class Swiat:
         self.organizmy = []
         self.info = []
     def SetR(self,x,y):
+        if x < 1 or y < 1:
+            raise RuntimeError
+            return
         self.sRX = x
         self.sRY = y
         self.window.setSize(x,y)
@@ -205,10 +208,13 @@ class Swiat:
         if (key == 85):
             self.pressedKey = 4
         k = len(self.organizmy)-1
-        for i in range(0,k):
-            self.organizmy[i].akcja()
-            self.organizmy[i].kolizja()
-            k = len(self.organizmy)-1
+        try:
+            for i in range(0,k):
+                self.organizmy[i].akcja()
+                self.organizmy[i].kolizja()
+                k = len(self.organizmy)-1
+        except IndexError:
+            print "Cos poszlo nie tak"
         self.turaNumer += 1
         return True
     def RysujSwiat(self):
@@ -218,7 +224,7 @@ class Swiat:
                 self.window.hbox.itemAtPosition(self.organizmy[i].posX,self.organizmy[i].posY).widget().setStyleSheet("background-color: "+self.organizmy[i].color)
         return True
     def UpdateLog(self):
-        print "INFO" + str(len(self.info))
+        #print "INFO" + str(len(self.info))
         self.window.list.clear()
         for i in range(0,len(self.info)):
             self.window.list.addItem( QListWidgetItem(self.info[i]))

@@ -13,4 +13,9 @@ class Roslina(Organizm):
         pass
     @abstractmethod
     def kolizja(self):
+        org = self.swiat.podajOrganizm(self.posX, self.posY)
+        if (org.id != self.id):
+            self.swiat.info.insert(len(self.swiat.info), "Organizm - " + org.name + " zjada " + self.name)
+            #self.swiat.deleteOrganizm(org)
+            self.swiat.deleteOrganizm(self)
         pass

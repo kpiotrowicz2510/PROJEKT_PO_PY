@@ -56,7 +56,11 @@ y, ok = QInputDialog.getText(mywin, 'Rozmiary', 'Podaj rozmiar Y')
 swiat = Swiat()
 swiat.SetWindow(mywin)
 mywin.swiat = swiat
-swiat.SetR(int(x),int(y))
+try:
+    swiat.SetR(int(y),int(x))
+except RuntimeError:
+    ret = QMessageBox(QMessageBox.Information,"Nieprawidlowe wymiary!", "Ustawianie na domyslna wartosc: 10x10").exec_()
+    swiat.SetR(10,10)
 mywin.run()
 initialize()
 swiat.UpdateLoop(1)
