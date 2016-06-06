@@ -146,7 +146,13 @@ class Swiat:
         self.organizmy.insert(self.newId,org)
         self.newId+=1
         self.info.insert(len(self.info), "Dodano organizm - " + org.name)
-
+    def list_sort(self,a,b):
+        if(a.inicjatywa>b.inicjatywa):
+            return 1
+        if (a.inicjatywa == b.inicjatywa):
+            return 0
+        else:
+            return -1
     def AddOrganizm(self, org,x=-1,y=-1):
         if(x>-1 and y>-1):
             org.posX = x
@@ -160,6 +166,7 @@ class Swiat:
             return
         org.id = self.newId
         self.organizmy.insert(self.newId,org)
+        self.organizmy.sort(self.list_sort)
         self.newId += 1
         self.info.insert(len(self.info), "Dodano organizm - " + org.name)
     def FreeSpace(self,x,y):
