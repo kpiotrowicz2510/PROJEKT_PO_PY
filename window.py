@@ -12,17 +12,16 @@ class MyWindow(QWidget):
         self.close()
     def buttonClick(self):
         addOrg, ok = QInputDialog.getText(self, 'Dodaj organizm', 'Podaj nazwe organizmu:')
-        number = int(self.sender().objectName())
+        number = self.sender().objectName()
         nx = 0
         ny = 0
-        ny = int(number/self.sizeX)
-        nx = number - ny*self.sizeX
+        ny = int(number.split(":")[1])
+        nx = int(number.split(":")[0])
         self.swiat.AddName(addOrg,ny, nx)
     def __init__(self):
         super(MyWindow, self).__init__()
     def keyPressEvent(self, event):
         key = event.key()
-        print key
         self.swiat.UpdateLoop(key)
     def setSize(self,x,y):
         self.sizeX = x
@@ -49,7 +48,7 @@ class MyWindow(QWidget):
                 button = QPushButton()
                 button.setGeometry(QRect(0, 20, 20, 20))
                 button.setStyleSheet("background-color: #FFF")
-                button.setObjectName(str(j * self.sizeX + i))
+                button.setObjectName(str(j) + ":" + str(i))
                 button.setMaximumWidth(20)
                 button.setMaximumHeight(20)
                 #button.setFlat(True)
